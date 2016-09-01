@@ -3,18 +3,43 @@
   <head>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
   </head>
   <body ng-controller="mainCtrl">
-    <div class="main-container">
-      <h1> DevMountain Chat Room </h1>
-      <form ng-submit="postMessage(message)">
-        <input class="form-control text-box" type="text" ng-model="message" placeholder="Message">
+    <div class="main-card">
+      <div class="card-header"></div>
+      <div class="card-info">
+        <div class="card-mug"></div>
+        <h1 class="mainFont">DevMountain Chatroom</h1>
+        <h2 class="secondFont">A simple chat for DevMountain Students</h2>
+        <h3 class="thirdFont">Courtesy of Gustav Nordstrom</h3>
+      <form role="form" ng-submit="postMessage(message)">
+        <div class="form-group">
+          <input type="text" id="message-submit" class="form-control text-box messageButton" ng-model="message" placeholder="Write your message here">
+        </div>
       </form>
-      <div class="messages-container">
-        <p ng-repeat="message in messages"> {{message.message}} </p>
+        <div class="panel panel-default">
+          <div class="panel-heading">Messages from your Classmates</div>
+          <ul class="list-group">
+            <li class="list-group-item" ng-repeat="message in messages">
+              <span class="badge">{{message.createdAt | date : 'short'}}</span>
+              {{message.message}}
+            </li>
+          </ul>
+        </div>
       </div>
+
     </div>
+
+        <!-- <div class="main-container">
+          <h1> DevMountain Chat Room </h1>
+          <form ng-submit="postMessage(message)">
+            <input class="form-control text-box" type="text" ng-model="message" placeholder="Message">
+          </form>
+          <div class="messages-container" ng-repeat="message in messages">
+            <p > {{message.message}} -- {{message.createdAt | date : 'short'}}</p>
+          </div>
+        </div> -->
     <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.19.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
     <script src="js/app.js"></script>
